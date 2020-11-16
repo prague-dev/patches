@@ -1,0 +1,22 @@
+From b863f4bbbbf68924fbcb59bb4fdc1a6a082b5f38 Mon Sep 17 00:00:00 2001
+From: Simone Esposito <31246543+DarkJoker360@users.noreply.github.com>
+Date: Mon, 16 Nov 2020 23:18:35 +0100
+Subject: [PATCH] Camera: Uncomment LOG_NDEBUG definition
+
+---
+ services/camera/libcameraservice/CameraService.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/services/camera/libcameraservice/CameraService.cpp b/services/camera/libcameraservice/CameraService.cpp
+index 550be4a7d5..2bea3d0967 100644
+--- a/services/camera/libcameraservice/CameraService.cpp
++++ b/services/camera/libcameraservice/CameraService.cpp
+@@ -16,7 +16,7 @@
+ 
+ #define LOG_TAG "CameraService"
+ #define ATRACE_TAG ATRACE_TAG_CAMERA
+-//#define LOG_NDEBUG 0
++#define LOG_NDEBUG 0
+ 
+ #include <algorithm>
+ #include <climits>
