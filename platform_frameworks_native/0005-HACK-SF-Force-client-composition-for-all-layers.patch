@@ -14,7 +14,7 @@ Change-Id: Iccec69e66f27d2d6eff55fc9cb6e5c0e1ef515c5
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/services/surfaceflinger/SurfaceFlinger.cpp b/services/surfaceflinger/SurfaceFlinger.cpp
-index 8cf044e86..a65f0b3e4 100644
+index 8cf044e86c..a65f0b3e4f 100644
 --- a/services/surfaceflinger/SurfaceFlinger.cpp
 +++ b/services/surfaceflinger/SurfaceFlinger.cpp
 @@ -2016,9 +2016,9 @@ void SurfaceFlinger::setUpHWComposer() {
