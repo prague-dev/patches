@@ -1,7 +1,7 @@
-From 0ff44cc65aa9dc16ff9f0301142b9b537b4912f8 Mon Sep 17 00:00:00 2001
+From 23ea5c4b974d476fe8cd62e1d8e133dde28ceb0d Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <pierre-hugues.husson@softathome.com>
 Date: Tue, 18 Sep 2018 17:05:07 +0200
-Subject: [PATCH 3/3] Support hostap on O/O-MR1 vendors
+Subject: [PATCH 2/4] Support hostap on O/O-MR1 vendors
 
 Two issues are fixed here:
 - some vendor HALs lied (because of Android behaviour) about ap interface name.
@@ -11,15 +11,15 @@ quite a good guess
 Now, it is a requirement to be supported, so most(all?) HALs don't
 support it. force stop/start for every reconfiguration
 ---
- .../com/android/server/wifi/HalDeviceManager.java  | 22 ++++++++++++++++++++--
- .../java/com/android/server/wifi/WifiNative.java   | 15 ++++++++++++++-
+ .../android/server/wifi/HalDeviceManager.java | 22 +++++++++++++++++--
+ .../com/android/server/wifi/WifiNative.java   | 15 ++++++++++++-
  2 files changed, 34 insertions(+), 3 deletions(-)
 
 diff --git a/service/java/com/android/server/wifi/HalDeviceManager.java b/service/java/com/android/server/wifi/HalDeviceManager.java
-index 3c61217..68fc9cc 100644
+index e10234f68..bef3c0e9b 100644
 --- a/service/java/com/android/server/wifi/HalDeviceManager.java
 +++ b/service/java/com/android/server/wifi/HalDeviceManager.java
-@@ -63,8 +63,8 @@ import java.util.Set;
+@@ -64,8 +64,8 @@ import java.util.Set;
   */
  public class HalDeviceManager {
      private static final String TAG = "HalDevMgr";
@@ -30,7 +30,7 @@ index 3c61217..68fc9cc 100644
  
      private static final int START_HAL_RETRY_INTERVAL_MS = 20;
      // Number of attempts a start() is re-tried. A value of 0 means no retries after a single
-@@ -224,6 +224,16 @@ public class HalDeviceManager {
+@@ -233,6 +233,16 @@ public class HalDeviceManager {
       */
      public IWifiStaIface createStaIface(boolean lowPrioritySta,
              @Nullable InterfaceDestroyedListener destroyedListener, @Nullable Handler handler) {
@@ -47,7 +47,7 @@ index 3c61217..68fc9cc 100644
          return (IWifiStaIface) createIface(IfaceType.STA, lowPrioritySta, destroyedListener,
                  handler);
      }
-@@ -233,6 +243,14 @@ public class HalDeviceManager {
+@@ -242,6 +252,14 @@ public class HalDeviceManager {
       */
      public IWifiApIface createApIface(@Nullable InterfaceDestroyedListener destroyedListener,
              @Nullable Handler handler) {
@@ -63,10 +63,10 @@ index 3c61217..68fc9cc 100644
      }
  
 diff --git a/service/java/com/android/server/wifi/WifiNative.java b/service/java/com/android/server/wifi/WifiNative.java
-index 18f06f7..3680f14 100644
+index 3e5dc3c79..63907e67c 100644
 --- a/service/java/com/android/server/wifi/WifiNative.java
 +++ b/service/java/com/android/server/wifi/WifiNative.java
-@@ -692,8 +692,21 @@ public class WifiNative {
+@@ -769,8 +769,21 @@ public class WifiNative {
      private String createApIface(@NonNull Iface iface) {
          synchronized (mLock) {
              if (mWifiVendorHal.isVendorHalSupported()) {
@@ -90,5 +90,5 @@ index 18f06f7..3680f14 100644
                  Log.i(TAG, "Vendor Hal not supported, ignoring createApIface.");
                  return handleIfaceCreationWhenVendorHalNotSupported(iface);
 -- 
-2.7.4
+2.17.1
 
