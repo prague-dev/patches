@@ -1,4 +1,4 @@
-From 5439053565a7eb1227465862723ae2ab9fb73633 Mon Sep 17 00:00:00 2001
+From a02259305c315672cf55b214d9fd788695aa589c Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 16 Sep 2019 22:47:37 +0200
 Subject: [PATCH 4/4] Boot wifi supplicant both with lazy-hal style and init
@@ -6,28 +6,31 @@ Subject: [PATCH 4/4] Boot wifi supplicant both with lazy-hal style and init
 
 Change-Id: I7e23348d4d16d3787f2c80bce3f8d0178dd5c4c7
 ---
- .../java/com/android/server/wifi/SupplicantStaIfaceHal.java   | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../com/android/server/wifi/SupplicantStaIfaceHal.java     | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/service/java/com/android/server/wifi/SupplicantStaIfaceHal.java b/service/java/com/android/server/wifi/SupplicantStaIfaceHal.java
-index fa82cca20..c3064e130 100644
+index 22aa62402..85cd1bf07 100644
 --- a/service/java/com/android/server/wifi/SupplicantStaIfaceHal.java
 +++ b/service/java/com/android/server/wifi/SupplicantStaIfaceHal.java
-@@ -622,12 +622,12 @@ public class SupplicantStaIfaceHal {
+@@ -690,14 +690,13 @@ public class SupplicantStaIfaceHal {
       */
      public boolean startDaemon() {
          synchronized (mLock) {
 +            Log.i(TAG, "Starting supplicant using init");
-+            mPropertyService.set(INIT_START_PROPERTY, INIT_SERVICE_NAME);
++            mFrameworkFacade.startSupplicant();
              if (isV1_1()) {
                  Log.i(TAG, "Starting supplicant using HIDL");
                  return startDaemon_V1_1();
-             } else {
+-            } else {
 -                Log.i(TAG, "Starting supplicant using init");
--                mPropertyService.set(INIT_START_PROPERTY, INIT_SERVICE_NAME);
-                 return true;
+-                mFrameworkFacade.startSupplicant();
+-                return true;
              }
++            return true;
          }
+     }
+ 
 -- 
-2.17.1
+2.25.1
 

@@ -1,0 +1,31 @@
+From b73f50c70097895c640aa26dc38c8c599f865a12 Mon Sep 17 00:00:00 2001
+From: Artem Borisov <dedsa2002@gmail.com>
+Date: Thu, 1 Oct 2020 11:08:14 +0200
+Subject: [PATCH] HACK: SF: Force client composition for all layers
+
+For unknown reasons using device composition on all
+kirin devices introduces significant image quality drop.
+Let's force client composition (no HW overlays) until
+we figure the proper solution.
+
+DarkJoker360 edit: Port it to Android 10.
+DarkJoker360 edit2: Port it to Android 11.
+
+Signed-off-by: DarkJoker360 <simoespo159@gmail.com
+
+diff --git a/services/surfaceflinger/SurfaceFlinger.cpp b/services/surfaceflinger/SurfaceFlinger.cpp
+index 07690cbf3..343cc9538 100644
+--- a/services/surfaceflinger/SurfaceFlinger.cpp
++++ b/services/surfaceflinger/SurfaceFlinger.cpp
+@@ -2077,7 +2077,7 @@ void SurfaceFlinger::onMessageRefresh() {
+         mDrawingState.colorMatrixChanged = false;
+     }
+ 
+-    refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
++    refreshArgs.devOptForceClientComposition = true;
+ 
+     if (mDebugRegion != 0) {
+         refreshArgs.devOptFlashDirtyRegionsDelay =
+-- 
+2.25.1
+

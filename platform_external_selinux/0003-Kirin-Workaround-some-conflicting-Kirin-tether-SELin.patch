@@ -1,7 +1,7 @@
-From 66484dba5f9016c4d9a7ed6053129f17efbbc816 Mon Sep 17 00:00:00 2001
+From dc49530b1c5093a4c3abe87b225acf3448e7f127 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 3 Dec 2018 20:54:54 +0100
-Subject: [PATCH 3/5] ::Kirin:: Workaround some conflicting Kirin tether
+Subject: [PATCH 03/10] ::Kirin:: Workaround some conflicting Kirin tether
  SELinux context
 
 Some Kirin devices declared some android.hardware.tetheroffload HALs,
@@ -36,5 +36,5 @@ index eaca5947..ab92985b 100644
  					errno = EINVAL;
  					selinux_log
 -- 
-2.17.1
+2.25.1
 
