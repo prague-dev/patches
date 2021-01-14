@@ -1,7 +1,7 @@
-From 91526540a821ffd98f52c498683d1c62d492fb69 Mon Sep 17 00:00:00 2001
+From da46972be7c62be904d9d2739db2699c8fdf0671 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 30 Sep 2020 22:41:39 +0200
-Subject: [PATCH 06/10] Add persist.sys.phh.no_present_or_validate property to
+Subject: [PATCH 06/11] Add persist.sys.phh.no_present_or_validate property to
  disable presentOrValidate since on vndk 26/27 presentOrValidate can be broken
 
 Change-Id: I5f0c6c5e129bc21348d6f279d3ba455a5a0f008b

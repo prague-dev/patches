@@ -1,7 +1,7 @@
-From bbd4f865064164319fa6d234d6fad957024758ef Mon Sep 17 00:00:00 2001
+From edf955c7e8e1431b9e97395ae3ef8ed45b9e2af7 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 1 Mar 2020 18:14:40 +0100
-Subject: [PATCH 17/28] Remove orientation 4 from sensor earlier in the process
+Subject: [PATCH 17/35] Remove orientation 4 from sensor earlier in the process
  chain
 
 Change-Id: Id8e2e860a73d417fc70db6cf5fc5fa5ef187aa50

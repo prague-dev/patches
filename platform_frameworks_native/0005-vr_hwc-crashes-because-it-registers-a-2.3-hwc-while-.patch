@@ -1,7 +1,7 @@
-From 35f6676b9fab10f460925eabc1b1de3bf48f74ea Mon Sep 17 00:00:00 2001
+From 68166362da756cae622825f259ed3b7253d2d636 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Fri, 11 Sep 2020 21:33:05 +0200
-Subject: [PATCH 05/10] vr_hwc crashes because it registers a 2.3 hwc, while
+Subject: [PATCH 05/11] vr_hwc crashes because it registers a 2.3 hwc, while
  manifest says 2.1
 
 Change-Id: Icfaea3e471209e5773f52f880ffbcf5de744737e

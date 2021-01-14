@@ -1,7 +1,7 @@
-From 6097954863cabad45d48672f56b878686e6be088 Mon Sep 17 00:00:00 2001
+From 9d841658125e39ce1140e0dedcffc6b01d43568e Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 19 Aug 2018 23:07:24 +0200
-Subject: [PATCH 10/10] Ignore usage bits verification
+Subject: [PATCH 10/11] Ignore usage bits verification
 
 This didn't ignore as of 8.1, so we're ""safe""
 

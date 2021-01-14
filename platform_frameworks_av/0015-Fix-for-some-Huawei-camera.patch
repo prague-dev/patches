@@ -1,7 +1,7 @@
-From 3c374cb65bd0e28c73fbd452e8201487dd1acb94 Mon Sep 17 00:00:00 2001
+From 704316f0ca5e4f1b9f5c64fa58dba39ca0a87052 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 3 Dec 2019 14:04:17 +0100
-Subject: [PATCH 15/15] Fix for some Huawei camera
+Subject: [PATCH 15/16] Fix for some Huawei camera
 
 ---
  services/camera/libcameraservice/CameraService.cpp | 9 +++++----

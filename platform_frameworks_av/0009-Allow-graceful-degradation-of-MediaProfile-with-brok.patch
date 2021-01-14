@@ -1,7 +1,7 @@
-From 9c54b76b1e87ddf2cbc34d9660555310e3c0d5db Mon Sep 17 00:00:00 2001
+From 19c66057e12fb9dcd05ce7f9426394fe5829d6e9 Mon Sep 17 00:00:00 2001
 From: Alex Zhang <difan@google.com>
 Date: Fri, 17 Apr 2020 16:08:24 -0700
-Subject: [PATCH 09/15] Allow graceful degradation of MediaProfile with broken
+Subject: [PATCH 09/16] Allow graceful degradation of MediaProfile with broken
  configuration.
 
 Currently, when media profile declares something unsupported / broken,
