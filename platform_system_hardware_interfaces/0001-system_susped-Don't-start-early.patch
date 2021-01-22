@@ -1,0 +1,25 @@
+From dffbd73f633ad6e0091920e321a2277a357a4ac3 Mon Sep 17 00:00:00 2001
+From: DarkJoker360 <simoespo159@gmail.com>
+Date: Sat, 16 Jan 2021 18:22:24 +0100
+Subject: [PATCH] system_suspend: Don't start early
+
+* Fixes deepsleep issues.
+
+This reverts commit cb732f9b635b5f6f79e447ddaf743ebb800b8535.
+
+Signed-off-by: DarkJoker360 <simoespo159@gmail.com>
+---
+ suspend/1.0/default/android.system.suspend@1.0-service.rc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/suspend/1.0/default/android.system.suspend@1.0-service.rc b/suspend/1.0/default/android.system.suspend@1.0-service.rc
+index 965ca16..c5d3869 100644
+--- a/suspend/1.0/default/android.system.suspend@1.0-service.rc
++++ b/suspend/1.0/default/android.system.suspend@1.0-service.rc
+@@ -1,5 +1,5 @@
+ service system_suspend /system/bin/hw/android.system.suspend@1.0-service
+-    class early_hal
++    class hal
+     user system
+     group system wakelock
+     capabilities BLOCK_SUSPEND

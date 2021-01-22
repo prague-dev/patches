@@ -1,0 +1,90 @@
+From 34814a4c3f1ecb369ff5a4f30c43f96ec3251941 Mon Sep 17 00:00:00 2001
+From: DarkJoker360 <simoespo159@gmail.com>
+Date: Thu, 14 Jan 2021 03:45:02 -0800
+Subject: [PATCH] SystemUI: Hide screenrecord QS tile
+
+* As workaround we are going to repleace screenrecord
+  with OPScreenRecorder so we need to avoid double qs
+  tiles.
+
+Signed-off-by: DarkJoker360 <simoespo159@gmail.com>
+Change-Id: Id0c27d2dc9c46b6964223ac1ed67e0bad3a5c7b7
+
+diff --git a/packages/SystemUI/res/values/config.xml b/packages/SystemUI/res/values/config.xml
+index 5e5df6bfd98..df26bb4da2c 100644
+--- a/packages/SystemUI/res/values/config.xml
++++ b/packages/SystemUI/res/values/config.xml
+@@ -106,7 +106,7 @@
+ 
+     <!-- The default tiles to display in QuickSettings -->
+     <string name="quick_settings_tiles_default" translatable="false">
+-        wifi,bt,dnd,flashlight,rotation,battery,cell,airplane,cast,screenrecord
++        wifi,bt,dnd,flashlight,rotation,battery,cell,airplane,cast
+     </string>
+ 
+     <!-- The minimum number of tiles to display in QuickSettings -->
+@@ -114,7 +114,7 @@
+ 
+     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
+     <string name="quick_settings_tiles_stock" translatable="false">
+-        wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,location,hotspot,inversion,saver,dark,work,cast,night,screenrecord,reverse
++        wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,location,hotspot,inversion,saver,dark,work,cast,night,reverse
+     </string>
+ 
+     <!-- The tiles to display in QuickSettings -->
+diff --git a/packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java b/packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
+index c182a58a28c..b7680b6c30e 100644
+--- a/packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
++++ b/packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
+@@ -40,7 +40,7 @@ import com.android.systemui.qs.tiles.LocationTile;
+ import com.android.systemui.qs.tiles.NfcTile;
+ import com.android.systemui.qs.tiles.NightDisplayTile;
+ import com.android.systemui.qs.tiles.RotationLockTile;
+-import com.android.systemui.qs.tiles.ScreenRecordTile;
++//import com.android.systemui.qs.tiles.ScreenRecordTile;
+ import com.android.systemui.qs.tiles.UiModeNightTile;
+ import com.android.systemui.qs.tiles.UserTile;
+ import com.android.systemui.qs.tiles.WifiTile;
+@@ -77,7 +77,7 @@ public class QSFactoryImpl implements QSFactory {
+     private final Provider<NfcTile> mNfcTileProvider;
+     private final Provider<GarbageMonitor.MemoryTile> mMemoryTileProvider;
+     private final Provider<UiModeNightTile> mUiModeNightTileProvider;
+-    private final Provider<ScreenRecordTile> mScreenRecordTileProvider;
++    //private final Provider<ScreenRecordTile> mScreenRecordTileProvider;
+ 
+     private final Lazy<QSHost> mQsHostLazy;
+ 
+@@ -101,8 +101,8 @@ public class QSFactoryImpl implements QSFactory {
+             Provider<NightDisplayTile> nightDisplayTileProvider,
+             Provider<NfcTile> nfcTileProvider,
+             Provider<GarbageMonitor.MemoryTile> memoryTileProvider,
+-            Provider<UiModeNightTile> uiModeNightTileProvider,
+-            Provider<ScreenRecordTile> screenRecordTileProvider) {
++            Provider<UiModeNightTile> uiModeNightTileProvider)
++            /*Provider<ScreenRecordTile> screenRecordTileProvider)*/ {
+         mQsHostLazy = qsHostLazy;
+         mWifiTileProvider = wifiTileProvider;
+         mBluetoothTileProvider = bluetoothTileProvider;
+@@ -123,7 +123,7 @@ public class QSFactoryImpl implements QSFactory {
+         mNfcTileProvider = nfcTileProvider;
+         mMemoryTileProvider = memoryTileProvider;
+         mUiModeNightTileProvider = uiModeNightTileProvider;
+-        mScreenRecordTileProvider = screenRecordTileProvider;
++        //mScreenRecordTileProvider = screenRecordTileProvider;
+     }
+ 
+     public QSTile createTile(String tileSpec) {
+@@ -173,8 +173,8 @@ public class QSFactoryImpl implements QSFactory {
+                 return mNfcTileProvider.get();
+             case "dark":
+                 return mUiModeNightTileProvider.get();
+-            case "screenrecord":
+-                return mScreenRecordTileProvider.get();
++            /*case "screenrecord":
++                return mScreenRecordTileProvider.get();*/
+         }
+ 
+         // Custom tiles
+-- 
+2.29.2
+
